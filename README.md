@@ -38,8 +38,19 @@ didn't change, 6 `stop` with nothing connected, 7 no Local Network permission.
 if airplay-screen status >/dev/null; then airplay-screen stop; else airplay-screen start "Living Room"; fi
 ```
 
-Anything that can run a command (Hammerspoon, Raycast, launchd, cron) can call it; run it as a separate process
-rather than pressing System Settings yourself, since the menu blocks the caller while it is open.
+Anything that can run a command can call it. Run it as a separate process rather than
+pressing System Settings yourself, since the menu blocks the caller while it is open.
+
+From [Hammerspoon](https://www.hammerspoon.org/) (tested: `list`, `start` and `stop` from a
+quick-settings menu):
+
+```lua
+hs.task.new("/opt/homebrew/bin/airplay-screen", function(code, out, err)
+    if code ~= 0 then hs.alert.show(err) end
+end, { "start", "Living Room" }):start()
+```
+
+Hammerspoon needs the Accessibility permission, and `airplay-screen` the Local Network one.
 
 ## Permissions
 
