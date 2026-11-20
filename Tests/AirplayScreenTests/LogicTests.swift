@@ -16,9 +16,9 @@ import Testing
     }
 
     @Test func resolveChoiceByNumberOrName() {
-        let names = ["marBook", "Telek"]
-        #expect(resolveChoice("2", from: names) == "Telek")
-        #expect(resolveChoice(" telek ", from: names) == "Telek")
+        let names = ["Office Mac", "Living Room"]
+        #expect(resolveChoice("2", from: names) == "Living Room")
+        #expect(resolveChoice(" living room ", from: names) == "Living Room")
         #expect(resolveChoice("3", from: names) == nil)
         #expect(resolveChoice("0", from: names) == nil)
         #expect(resolveChoice("nope", from: names) == nil)

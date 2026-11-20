@@ -18,7 +18,7 @@ scripts/build-app.sh [version]    # build/AirplayScreen.app, ad-hoc signed
 
 - **Commits**: Conventional Commits (`feat:`, `fix:`, `docs:`, `chore(deps):`); release-please reads them for the version bump and `CHANGELOG.md`.
 - **Branches & PRs**: branch, PR, squash-merge. release-please's own bump PRs auto-merge on patch only.
-- Command names, output and exit codes are a contract with consumers (the dotfiles' Hammerspoon quick settings): change them only with a major version.
+- Command names, output and exit codes are a contract with consumers (Hammerspoon configs and shell scripts): change them only with a major version.
 
 ## Non-obvious pitfalls
 

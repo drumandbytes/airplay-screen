@@ -34,7 +34,7 @@ standby (cached record); `start` only sees it once it's actually reachable.
 - **The menu's contents are fixed when it opens.** Right after the pane loads, discovery
   may not be done, so `start` cancels and reopens the menu every 0.5 s (up to ~6 s).
 - **Don't quit Settings right after pressing the device.** Quitting 1 s later aborted the
-  connection ("Couldn't connect to Telek"). `start` waits for the display to appear.
+  connection ("Couldn't connect to <device>"). `start` waits for the display to appear.
 - **`AXPress` on a menu button blocks until the menu closes.** Set
   `AXUIElementSetMessagingTimeout` before pressing. Without it the caller hangs:
   Hammerspoon's `hs.axuielement` froze its main thread (all hotkeys) until Settings quit.
@@ -61,7 +61,7 @@ standby (cached record); `start` only sees it once it's actually reachable.
   and SystemUIServer has no children for any client (System Events, Swift, Hammerspoon),
   even with the hidden menu bar revealed. `AXManualAccessibility` /
   `AXEnhancedUserInterface` can't be set (-25205 / -25208).
-- **Private AVFoundation routing API** :
+- **Private AVFoundation routing API**:
   `AVOutputContext` (`+sharedSystemScreenContext`, `-setOutputDevice:options:...`) and
   `AVOutputDeviceDiscoverySession` exist, but from our binary the context is nil and
   discovery returns nothing. Control Center and AirPlayUIAgent hold restricted Apple
