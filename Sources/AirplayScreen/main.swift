@@ -195,10 +195,24 @@ func bonjourDisplays(wait: TimeInterval = 1.5) -> [String] {
             names.insert(name)
         }
     }
+    var browseError: NWError?
+    browser.stateUpdateHandler = { state in
+        lock.lock(); defer { lock.unlock() }
+        if ProcessInfo.processInfo.environment["AIRPLAY_DEBUG"] != nil {
+            FileHandle.standardError.write("browser state: \(state)\n".data(using: .utf8)!)
+        }
+        switch state {
+        case .waiting(let e), .failed(let e): browseError = e
+        default: break
+        }
+    }
     browser.start(queue: .global())
     Thread.sleep(forTimeInterval: wait)
     browser.cancel()
     lock.lock(); defer { lock.unlock() }
+    if names.isEmpty, let browseError {
+        fail("couldn't browse the network for AirPlay displays: \(browseError)\nThe app you run this from probably lacks Local Network permission (System Settings → Privacy & Security → Local Network).", 7)
+    }
     return names.sorted()
 }
 

@@ -29,7 +29,7 @@ If the receiver asks for a code, macOS shows its own prompt on your screen; `sta
 to 60 s for the connection.
 
 Exit codes: 2 usage, 3 no Accessibility permission, 4 display not found, 5 the connection
-didn't change, 6 `stop` with nothing connected.
+didn't change, 6 `stop` with nothing connected, 7 no Local Network permission.
 
 ### In scripts
 
@@ -43,10 +43,13 @@ rather than pressing System Settings yourself, since the menu blocks the caller 
 
 ## Permissions
 
-`start` and `stop` press buttons in System Settings, which needs **Accessibility**
-permission for the app you run the command from (Terminal, Ghostty, Hammerspoon, a launchd
-job's parent...). Run `airplay-screen permissions`, then switch that app on. macOS grants
-the permission to the app that started the command, not to `airplay-screen` itself.
+- **Local Network** (`list`, and the menu when you run it with no arguments): the first time
+  `airplay-screen` looks for displays, macOS asks to allow it. Without it the search finds
+  nothing and `list` exits with code 7.
+- **Accessibility** (`start`, `stop`): the command presses buttons in System Settings, which
+  needs the permission for the app you run it from (Terminal, Ghostty, Hammerspoon, a launchd
+  job's parent...). Run `airplay-screen permissions`, then switch that app on. macOS grants it
+  to the app that started the command, not to `airplay-screen` itself.
 
 ## Requirements
 
