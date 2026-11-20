@@ -2,7 +2,7 @@
 
 Start and stop **AirPlay screen mirroring** from the **macOS command line**: list the
 receivers on your network, connect, disconnect, or pick one from a menu. It works with the
-menu bar hidden and scripts well from Hammerspoon, launchd and the shell.
+menu bar hidden and is easy to call from scripts.
 Part of [Drumandbytes Projects](https://drumandbytes.com/projects/).
 
 ```sh
@@ -38,11 +38,8 @@ didn't change, 6 `stop` with nothing connected.
 if airplay-screen status >/dev/null; then airplay-screen stop; else airplay-screen start "Living Room"; fi
 ```
 
-```lua
--- Hammerspoon: run it as a task; don't press System Settings from inside Hammerspoon
--- (hs.axuielement blocks Hammerspoon's main thread while the menu is open)
-hs.task.new("/opt/homebrew/bin/airplay-screen", nil, { "start", "Living Room" }):start()
-```
+Anything that can run a command (Hammerspoon, Raycast, launchd, cron) can call it; run it as a separate process
+rather than pressing System Settings yourself, since the menu blocks the caller while it is open.
 
 ## Permissions
 
