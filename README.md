@@ -9,9 +9,9 @@ Part of [Drumandbytes Projects](https://drumandbytes.com/projects/).
 brew install --cask drumandbytes/tap/airplay-screen
 ```
 
-Works with Apple TV, HomePod, AirPlay-capable smart TVs (LG, Samsung, Sony...) and Mac
-receivers: anything that shows up under Screen Mirroring. Handy for Hammerspoon, SketchyBar,
-launchd, Raycast or Keyboard Maestro hooks.
+Meant for any AirPlay receiver that shows up under Screen Mirroring (Apple TV, AirPlay smart
+TVs, Mac receivers); so far tested against one TV. Handy for Hammerspoon, SketchyBar, launchd,
+Raycast or Keyboard Maestro hooks.
 
 macOS has no command for AirPlay mirroring, and the Screen Mirroring icon in Control Center
 can't be scripted. `airplay-screen` drives System Settings → Displays instead: it opens it
