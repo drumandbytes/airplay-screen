@@ -1,0 +1,36 @@
+name: Bug report
+description: start/stop/list didn't work on your Mac or receiver
+labels: [bug]
+body:
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      placeholder: "27.2.1"
+    validations:
+      required: true
+  - type: input
+    id: receiver
+    attributes:
+      label: Receiver
+      description: Apple TV, HomePod, smart TV model, AirPlay receiver app...
+    validations:
+      required: true
+  - type: input
+    id: command
+    attributes:
+      label: Command and exit code
+      placeholder: 'airplay-screen start "Living Room" -> exit 5'
+    validations:
+      required: true
+  - type: input
+    id: caller
+    attributes:
+      label: Run from
+      description: The app that launched it (Terminal, Ghostty, Hammerspoon, launchd...)
+  - type: textarea
+    id: details
+    attributes:
+      label: What happened
+    validations:
+      required: true
