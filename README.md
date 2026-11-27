@@ -1,6 +1,6 @@
 # airplay-screen
 
-Start and stop **AirPlay screen mirroring** from the **macOS command line**: list the
+Start and stop AirPlay screen mirroring from the macOS command line: list the
 receivers on your network, connect, disconnect, or pick one from a menu. It works with the
 menu bar hidden and is easy to call from scripts.
 Part of [Drumandbytes Projects](https://drumandbytes.com/projects/).
